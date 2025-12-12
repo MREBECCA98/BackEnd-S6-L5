@@ -1,0 +1,48 @@
+﻿@model List<BackEnd_S6_L5.Models.Entities.Camera>
+
+@{
+}
+
+<h1>Camere</h1>
+
+<form asp-controller="Camera" asp-action="Index" method="post">
+    <div class="mb-2">
+        <input type="number" name="Numero" class="form-control" placeholder="Numero camera" />
+    </div>
+    <div class="mb-2">
+        <input type="text" name="Tipo" class="form-control" placeholder="Tipo camera" />
+    </div>
+    <div class="mb-2">
+        <input type="number" step="0.01" name="Prezzo" class="form-control" placeholder="Prezzo" />
+    </div>
+    <button type="submit" class="btn btn-primary">Aggiungi Camera</button>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Tipo</th>
+            <th>Prezzo</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var camera in Model)
+        {
+            <tr>
+                <td>@camera.Numero</td>
+                <td>@camera.Tipo</td>
+                <td>@camera.Prezzo</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@camera.IdCamera" class="btn btn-sm btn-warning">Modifica</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@camera.IdCamera" />
+                        <button type="submit" class="btn btn-sm btn-danger">Elimina</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 

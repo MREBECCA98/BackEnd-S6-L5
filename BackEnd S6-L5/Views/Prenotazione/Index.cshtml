@@ -1,0 +1,54 @@
+﻿@model List<BackEnd_S6_L5.Models.Entities.Prenotazione>
+
+<h1>Prenotazioni</h1>
+
+<form asp-controller="Prenotazione" asp-action="Index" method="post">
+    <div class="mb-2">
+        <label for="Cliente">Seleziona il Cliente:</label>
+        <select class="form-select" aria-label="Default select example" name="ClienteId">
+            <option selected>Seleziona il Cliente</option>
+            @foreach (BackEnd_S6_L5.Models.Entities.Cliente cliente in ViewBag.Clienti)
+            {
+                <option value="@cliente.IdCliente">@cliente.Nome @cliente.Cognome</option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label for="Camera">Seleziona la Camera:</label>
+        <select class="form-select" aria-label="Default select example" name="CameraId">
+            <option selected>Seleziona la Camera</option>
+            @foreach (BackEnd_S6_L5.Models.Entities.Camera camera in ViewBag.Camere)
+            {
+                <option value="@camera.IdCamera">@camera.Numero @camera.Tipo</option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label for="DataInizio">Data Inizio Prenotazione:</label>
+        <input type="datetime-local" name="DataInizio" value="" />
+    </div>
+
+    <div class="mb-2">
+        <label for="DataFine">Data Fine Prenotazione:</label>
+        <input type="datetime-local" name="DataFine" value="" />
+    </div>
+
+    <div class="mb-2">
+        <label for="Stato">Seleziona lo Stato della Prenotazione:</label>
+        <select class="form-select" aria-label="Default select example" name="Stato">
+            <option selected>Seleziona lo stato della Prenotazione</option>
+            <option value="Confermata">Confermata</option>
+            <option value="In Attesa">In Attesa</option>
+            <option value="Annullata">Annullata</option>
+
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Prenota Camera</button>
+</form>
+

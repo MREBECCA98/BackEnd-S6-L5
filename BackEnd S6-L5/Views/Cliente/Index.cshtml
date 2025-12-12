@@ -1,0 +1,49 @@
+﻿@model List<BackEnd_S6_L5.Models.Entities.Cliente>
+
+
+<h1>Clienti</h1>
+<form asp-controller="Cliente" asp-action="Index" method="post">
+    <div class="mb-2">
+        <input type="text" name="Nome" class="form-control" placeholder="Nome" maxlength="50" />
+    </div>
+    <div class="mb-2">
+        <input type="text" name="Cognome" class="form-control" placeholder="Cognome" maxlength="50" />
+    </div>
+    <div class="mb-2">
+        <input type="email" name="Email" class="form-control" placeholder="Email" />
+    </div>
+    <div class="mb-2">
+        <input type="tel" name="Telefono" class="form-control" placeholder="Telefono" />
+    </div>
+    <button type="submit" class="btn btn-primary">Aggiungi Cliente</button>
+</form>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Nome</td>
+                <td>@cliente.Cognome</td>
+                <td>@cliente.Email</td>
+                <td>@cliente.Telefono</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@cliente.IdCliente" class="btn btn-sm btn-warning">Modifica</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@cliente.IdCliente" />
+                        <button type="submit" class="btn btn-sm btn-danger">Elimina</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

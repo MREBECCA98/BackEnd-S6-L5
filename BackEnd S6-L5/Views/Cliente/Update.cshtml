@@ -1,0 +1,29 @@
+﻿@model BackEnd_S6_L5.Models.Entities.Cliente
+
+<h1>Modifica Cliente</h1>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" name="IdCliente" value="@Model.IdCliente" />
+
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" name="Nome" value="@Model.Nome" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Cognome</label>
+        <input type="text" class="form-control" name="Cognome" value="@Model.Cognome" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="Email" value="@Model.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control" name="Telefono" value="@Model.Telefono" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Modifica Cliente</button>
+</form>
