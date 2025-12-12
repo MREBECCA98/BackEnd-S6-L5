@@ -37,7 +37,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(option =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
 {
     option.SignIn.RequireConfirmedPhoneNumber = false; //disapilitata la conferma per telefono 
     option.SignIn.RequireConfirmedEmail = false; //disabilitata la conferma via email
@@ -53,8 +53,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(option =>
   AddDefaultTokenProviders(); //aggiungo il provider per la generazione dei token
 
 //configurazione di user manager signin manager e role manager
-builder.Services.AddScoped<UserManager<IdentityUser>>(); //gestione utenti fornito dal framework
-builder.Services.AddScoped<SignInManager<IdentityUser>>(); //gestione log in
+builder.Services.AddScoped<UserManager<ApplicationUser>>(); //gestione utenti fornito dal framework
+builder.Services.AddScoped<SignInManager<ApplicationUser>>(); //gestione log in
 builder.Services.AddScoped<RoleManager<IdentityRole>>(); //gestione ruoli
 
 
