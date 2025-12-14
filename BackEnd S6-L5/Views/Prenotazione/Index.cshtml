@@ -2,6 +2,14 @@
 
 <h1>Prenotazioni</h1>
 
+@if (TempData["Success"] != null)
+{
+    <script>
+        alert('@TempData["Success"]');
+    </script>
+}
+
+
 <form asp-controller="Prenotazione" asp-action="Index" method="post">
     <div class="mb-2">
         <label for="Cliente">Seleziona il Cliente:</label>

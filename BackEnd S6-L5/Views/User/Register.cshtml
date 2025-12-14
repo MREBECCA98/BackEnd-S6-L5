@@ -1,0 +1,29 @@
+﻿@{
+}
+<form asp-controller="User" asp-action="Save" method="post">
+    <div class="mb-2">
+        <input type="email" name="Email" class="form-control" placeholder="Email" required />
+    </div>
+
+    <div class="mb-2">
+        <input type="password" name="Password" class="form-control" placeholder="Password" required />
+    </div>
+
+    <div class="mb-2">
+        <input type="text" name="Name" class="form-control" placeholder="Nome" required />
+    </div>
+
+    <div class="mb-2">
+        <input type="text" name="Surname" class="form-control" placeholder="Cognome" required />
+    </div>
+
+    <div class="mb-2">
+        <input type="tel" name="PhoneNumber" class="form-control" placeholder="Numero di telefono" required />
+    </div>
+
+    <div class="mb-2">
+        <input type="date" name="Birthday" class="form-control" placeholder="Data di nascita" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrati</button>
+</form>

@@ -57,7 +57,14 @@ builder.Services.AddScoped<UserManager<ApplicationUser>>(); //gestione utenti fo
 builder.Services.AddScoped<SignInManager<ApplicationUser>>(); //gestione log in
 builder.Services.AddScoped<RoleManager<IdentityRole>>(); //gestione ruoli
 
+//COOKIE 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/User/Login";
+    options.AccessDeniedPath = "/User/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
 
+});
 
 
 
@@ -79,7 +86,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+//rispettare l'ordine verticale per il funzionamento (UseAuthentication)
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

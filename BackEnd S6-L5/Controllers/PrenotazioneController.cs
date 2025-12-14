@@ -36,6 +36,8 @@ namespace BackEnd_S6_L5.Controllers
 
             await _prenotazioneServices.CreateAsync(prenotazione);
 
+            TempData["Success"] = "CAMERA PRENOTATA";
+
             return RedirectToAction("Index");
 
         }
